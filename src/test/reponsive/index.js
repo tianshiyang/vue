@@ -17,9 +17,7 @@ let data = {
     hasUtil: "basketball",
   },
 };
-let ele = document.querySelector("#app");
-let selfVue = new SelfVue(data, ele, "name");
-data.name = "lisi";
-setTimeout(() => {
-  data.name = "hahaha";
-}, 2000);
+let selfVue = new SelfVue({
+  el: "#app",
+  data: data,
+});

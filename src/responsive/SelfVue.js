@@ -1,14 +1,12 @@
 import { Observer } from "../responsive/Observer.js";
-import { Watcher } from "../responsive/Watcher.js";
+import { Compile } from "../responsive/Compile.js";
 class SelfVue {
-  constructor(data, el, exp) {
-    this.data = data;
-    this.el = el;
-    this.exp = exp;
-    new Observer(data).observer();
-    new Watcher(this, exp, (value) => {
-      el.innerHTML = value;
-    });
+  constructor(options) {
+    this.data = options.data;
+    this.el = options.el;
+    // this.exp = exp;
+    new Observer(this.data).observer();
+    new Compile(this.el, this);
   }
 }
 export { SelfVue };
