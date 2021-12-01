@@ -5,13 +5,13 @@ class Watcher {
     this.vm = vm;
     this.exp = exp;
     this.callback = callback;
-    this.value = this.get();
+    this.value = this.get(); // 这里的value是data中真实的数据
   }
   get() {
     // this当前watcher实例，监听的是HTML模板中某一项可匹配的value值，即以{{  }}形式出现的
-    Dep.target = this;
-    let value = this.vm.data[this.exp];
-    Dep.target = null;
+    Dep.target = this; // 这里的this为当前watcher的实例
+    let value = this.vm.data[this.exp]; // 注意！！！这里会触发Object.defineProperty的get方法
+    Dep.target = null; // 释放自己
     return value;
   }
   update() {
