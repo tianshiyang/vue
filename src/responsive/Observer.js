@@ -3,7 +3,6 @@ class Observer {
   constructor(data) {
     this.data = data;
     this.observer(data);
-    // Dep为订阅者，关于Dep的使用，在下文详解
     this.dep = new Dep();
   }
   observer(data) {
@@ -35,7 +34,6 @@ class Observer {
           return;
         }
         val = newVal;
-        // 下文详解Dep作用，现在不用关心，到此知道这个属性被监听到了即可
         self.dep.notify();
       },
     });

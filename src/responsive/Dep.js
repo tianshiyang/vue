@@ -9,7 +9,7 @@ class Dep {
   }
   notify() {
     this.subs.forEach((sub) => {
-      // sub是每个watcher的实例
+      // 每个sub都是对应HTML模板的watcher实例
       sub.update();
     });
   }
